@@ -8,6 +8,6 @@ const SortHelper = require('./utils/SortHelper')
 // SortHelper.sortTest(SelectionSort, SortHelper.generateTestData(Male, 10000))
 
 // 插入排序
-const males = SortHelper.generateTestData(Male, 10)
-const sortedMales = InsertionSort.BetterInsertionSort([...males])
-console.log(males, sortedMales)
+// const males = SortHelper.generateTestData(Male, 10)
+// const sortedMales = InsertionSort.reverseSort([...males])
+// console.log(males, sortedMales)

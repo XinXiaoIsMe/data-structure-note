@@ -1,5 +1,5 @@
 class InsertionSort {
-  static InsertionSort (list) {
+  static sort (list) {
     for (let i = 0; i < list.length; i ++) {
       for (let j = i; j > 0 && list[j].compareTo(list[j - 1]) > 0; j --)
         this._swap(list, j, j - 1)
@@ -7,12 +7,23 @@ class InsertionSort {
     return list
   }
 
-  static BetterInsertionSort (list) {
+  static betterSort (list) {
     for (let i = 0; i < list.length; i ++) {
       let t = list[i], j // 保存当前需要插入的元素下标
       for (j = i; j > 0 && t.compareTo(list[j - 1]) > 0; j --)
         list[j] = list[j - 1] // 当不是最终需要插入的位置时将元素向后平移一位
       // 寻找到最终位置后
+      list[j] = t
+    }
+    return list
+  }
+
+  // 从后往前遍历
+  static reverseSort (list) {
+    for (let i = list.length - 1; i >= 0; i --) {
+      let t = list[i], j
+      for (j = i; j < list.length - 1 && t.compareTo(list[j + 1]) > 0; j ++)
+        list[j] = list[j + 1]
       list[j] = t
     }
     return list
