@@ -1,0 +1,12 @@
+const CustomArray = require('./CustomArray')
+const Student = require('./Student')
+
+const arr = new CustomArray(4)
+arr.add(0, new Student('Andy', 18))
+arr.add(0, new Student('EastWood', 28))
+arr.addLast(new Student('Tom', 23))
+// arr.addLast(new Student('Jerry', 12))
+// arr.addLast(new Student('Mike', 27))
+// arr.addFirst(new Student('Kerry', 19))
+arr.removeFirst()
+console.log(arr)
