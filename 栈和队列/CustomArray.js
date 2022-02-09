@@ -17,6 +17,10 @@ class CustomArray {
     return this.data[index]
   }
 
+  getLast () {
+    return this.get(this.size - 1)
+  }
+
   set (index, el) {
     if (index < 0 || index >= this.size) throw new RangeError('Get failed. Required index > 0 and index < size')
     this.data[index] = el
@@ -60,14 +64,15 @@ class CustomArray {
     }
     this.data[index] = el
     this.size ++
+    return this.size
   }
 
   addFirst (el) {
-    this.add(0, el)
+    return this.add(0, el)
   }
 
   addLast (el) {
-    this.add(this.size, el)
+    return this.add(this.size, el)
   }
 
   remove (index) {
