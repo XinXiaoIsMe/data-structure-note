@@ -128,6 +128,31 @@ class LinkedList {
     this.head = this._removeElement(el, this.head)
   }
 
+  // 没有返回值的情况下可以使用双指针
+  // removeElement (el, pre, next) {
+  //   if (typeof pre === 'undefined') {
+  //     next = this.head
+  //     pre = new LinkNode(null, next)
+  //   }
+  //   if (next === null) return
+  //   if (next.el === el) {
+  //     if (this.head === next) {
+  //       // next = next.next
+  //       // pre.next = next
+  //       // this.head = next
+  //       this.head = pre.next = next = next.next
+  //     } else {
+  //       // next = next.next
+  //       // pre.next = next
+  //       pre.next = next = next.next
+  //     }
+  //   } else {
+  //     pre = next
+  //     next = next.next
+  //   }
+  //   this.removeElement(el, pre, next)
+  // }
+
   _removeElement (el, node) {
     if (node === null) return null
     node.next = this._removeElement(el, node.next) // 注意要先执行这一步求出移除el后子链表的头结点
