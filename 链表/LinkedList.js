@@ -148,6 +148,14 @@ class LinkedList {
     this.remove(this.size - 1)
   }
 
+  removeElement (e) {
+    let cur = this.dummyHead
+    while (cur.next) {
+      if (cur.next.e === e) cur.next = cur.next.next
+      else cur = cur.next
+    }
+  }
+
   toString () {
     let ret = ''
     let cur = this.dummyHead.next
