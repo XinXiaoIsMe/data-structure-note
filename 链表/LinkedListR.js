@@ -9,6 +9,9 @@ class LinkNode {
   }
 }
 
+/**
+ * 使用递归的方式
+ */
 class LinkedList {
   constructor () {
     this.head = null
