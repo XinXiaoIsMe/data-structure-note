@@ -1,4 +1,4 @@
-const InsertionSort = require("../插入排序/InsertionSort")
+// const InsertionSort = require("../插入排序/InsertionSort")
 
 // 自底向上的方式排序
 class MergeSort {
