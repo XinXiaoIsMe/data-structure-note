@@ -1,0 +1,17 @@
+// const BinarySearch = require('./BinarySearch_v2')
+const BinarySearch = require('./BinarySearch_v3')
+// const Upper = require('./Upper_v2')
+// const UpperCeil = require('./UpperCeil')
+// const LowerCeil = require('./LowerCeil')
+// const lower = require('./Lower')
+// const lowerFloor = require('./LowerFloor')
+// const upperFloor = require('./UpperFloor')
+
+const list = [4, 5, 5, 6, 8, 8]
+console.log(BinarySearch(list, 7))
+// console.log(Upper.search(list, 2))
+// console.log(UpperCeil(list, 7))
+// console.log(LowerCeil.search(list, 5))
+// console.log(lower(list, 0))
+// console.log(lowerFloor(list, 5))
+// console.log(upperFloor(list, 5))
