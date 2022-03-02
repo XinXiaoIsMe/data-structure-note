@@ -153,6 +153,25 @@ class BST {
     this._inOrder(node.right)
   }
 
+  // 中序遍历的非递归实现
+  inOrder2 () {
+    const stack = []
+    let node = this.root
+    while (node !== null) {
+      stack.push(node)
+      node = node.left
+    }
+    while (stack.length) {
+      let cur = stack.pop()
+      console.log(cur.el)
+      node = cur.right
+      if (node !== null) {
+        stack.push(node)
+        node = node.left
+      }
+    }
+  }
+
   // 后序遍历 后序遍历可用于释放二分搜索树的内存
   postOrder () {
     this._postOrder(this.root)
@@ -163,6 +182,33 @@ class BST {
     this._postOrder(node.left)
     this._postOrder(node.right)
     console.log(node.el)
+  }
+
+  // 后序遍历的非递归实现
+  postOrder2 () {
+    const excuteStack = [] // 执行栈
+    const recordStack = [] // 记录栈 用于记录当前节点是否存在右子孩子
+    const pushLeft = (node, stack) => {
+      while (node !== null) {
+        stack.push(node)
+        node = node.left
+      }
+    }
+
+    pushLeft(this.root, excuteStack)
+    while (excuteStack.length) {
+      const cur = excuteStack.pop()
+      if (cur.right === null) {
+        console.log(cur.el)
+      } else if (recordStack[recordStack.length - 1] === cur) {
+        recordStack.pop()
+        console.log(cur.el)
+      } else {
+        excuteStack.push(cur)
+        recordStack.push(cur)
+        pushLeft(cur.right, excuteStack)
+      }
+    }
   }
 
   toString () {
