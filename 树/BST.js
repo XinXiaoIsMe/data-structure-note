@@ -136,8 +136,8 @@ class BST {
     while (stack.length) {
       cur = stack.pop()
       console.log(cur.el)
-      if (cur.right !== null) stack.push(cur.right)
       if (cur.left !== null) stack.push(cur.left)
+      if (cur.right !== null) stack.push(cur.right)
     }
   }
 
@@ -187,7 +187,7 @@ class BST {
   // 后序遍历的非递归实现
   postOrder2 () {
     const excuteStack = [] // 执行栈
-    const recordStack = [] // 记录栈 用于记录当前节点是否存在右子孩子
+    const recordStack = [] // 记录栈 用于记录当前节点是否存在右孩子
     const pushLeft = (node, stack) => {
       while (node !== null) {
         stack.push(node)
@@ -208,6 +208,19 @@ class BST {
         recordStack.push(cur)
         pushLeft(cur.right, excuteStack)
       }
+    }
+  }
+
+  // 层序遍历
+  levelOrder () {
+    const queue = []
+    let node = this.root
+    queue.push(node)
+    while (queue.length) {
+      const cur = queue.shift()
+      console.log(cur.el)
+      if (cur.left) queue.push(cur.left)
+      if (cur.right) queue.push(cur.right)
     }
   }
 
