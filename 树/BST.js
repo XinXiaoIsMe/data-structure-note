@@ -86,6 +86,65 @@ class BST {
     }
   }
 
+  // 查找 BST 中最小的节点
+  minumum () {
+    if (this.size === 0) throw new RangeError('BST is empty!')
+    return this._minumum(this.root)
+  }
+
+  _minumum (root) {
+    if (root.left === null) return root
+    return this._minumum(root.left)
+  }
+
+  // 删除 BST 中最小的节点
+  removeMin () {
+    const min = this.minumum()
+    this.root = this._removeMin(this.root)
+    return min
+  }
+
+  // 删除掉以 node 为根的二分搜索树的最小节点
+  // 返回删除后的二分搜索树的根节点
+  _removeMin (node) {
+    if (node.left === null) {
+      const right = node.right
+      node.right = null
+      this.size --
+      return right
+    }
+
+    node.left = this._removeMin(node.left)
+    return node
+  }
+
+  maximum () {
+    if (this.size === 0) throw new RangeError('BST is empty!')
+    return this._maximum(this.root)
+  }
+
+  _maximum (node) {
+    if (node.right === null) return node
+    return this._maximum(node.right)
+  }
+
+  removeMax () {
+    const max = this.maximum()
+    this.root = this._removeMax(this.root)
+    return max
+  }
+
+  _removeMax (node) {
+    if (node.right === null) {
+      const left = node.left
+      node.left = null
+      return left
+    }
+
+    node.right = this._removeMax(node.right)
+    return node
+  }
+
   contains (el) {
     return this._contains(this.root, el)
   }
