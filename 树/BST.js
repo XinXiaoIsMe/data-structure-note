@@ -1,4 +1,4 @@
-// 二分搜索树 --> 又叫平衡二叉树 --> 根节点大于左子树所有节点的值，小于右子树所有节点的值
+// 二分搜索树 --> 根节点大于左子树所有节点的值，小于右子树所有节点的值
 class TreeNode {
   constructor (el) {
     this.el = el
@@ -143,6 +143,42 @@ class BST {
 
     node.right = this._removeMax(node.right)
     return node
+  }
+
+  // 删除任意节点
+  remove (el) {
+    this.root = this._remove(this.root, el)
+  }
+
+  _remove (node, el) {
+    if (node === null) return null
+    if (node.el > el) {
+      node.left = this._remove(node.left, el)
+      return node
+    } else if (node.el < el) {
+      node.right = this._remove(node.right, el)
+      return node
+    }
+
+    if (node.left === null) {
+      const right = node.right
+      node.right = null
+      size --
+      return right
+    }
+
+    if (node.right === null) {
+      const left = node.left
+      node.left = null
+      size --
+      return left
+    }
+
+    const successor = this._minumum(node.right)
+    successor.right = removeMin(node.right) // 注意这里 size 已经 减1了
+    successor.left = node.left
+    node.left = node.right = null
+    return successor
   }
 
   contains (el) {
