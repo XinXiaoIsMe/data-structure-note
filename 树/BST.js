@@ -163,20 +163,27 @@ class BST {
     if (node.left === null) {
       const right = node.right
       node.right = null
-      size --
+      this.size --
       return right
     }
 
     if (node.right === null) {
       const left = node.left
       node.left = null
-      size --
+      this.size --
       return left
     }
 
-    const successor = this._minumum(node.right)
-    successor.right = removeMin(node.right) // 注意这里 size 已经 减1了
-    successor.left = node.left
+    // 将右子树的最小节点移出，替换被删除的节点
+    // const successor = this._minumum(node.right)
+    // successor.right = removeMin(node.right) // 注意这里 size 已经 减1了
+    // successor.left = node.left
+    // node.left = node.right = null
+
+    // 或者将左子树的最大节点移出，替换被删除的节点
+    const successor = this._maximum(node.left)
+    successor.left = removeMax(node.left) // 注意这里 size 已经 减1了
+    successor.right = node.right
     node.left = node.right = null
     return successor
   }
