@@ -11,10 +11,18 @@ class SortHelper {
   }
 
   static sortTest (sortCtor, list) {
+    const isPrint = list.length < 30
+    if (isPrint) {
+      console.log('排序前：', list)
+    }
+
     const startTime = new Date().valueOf()
     sortCtor.sort(list)
     if (!this.isSorted(list)) throw new Error('this list is not sorted.')
     const endTime = new Date().valueOf()
+    if (isPrint) {
+      console.log('排序后：', list)
+    }
     console.log(`time: ${(endTime - startTime) / 1000}ms`)
   }
 
@@ -27,7 +35,7 @@ class SortHelper {
       }
       return `${name[0].toUpperCase()}${name.slice(1)}`
     }
-    return Array(len).fill().map((item, index) => new ctor(generateName(), index))
+    return Array(len).fill().map((item, index) => new ctor(generateName(), Math.floor(Math.random() * 100)))
   }
 }
 
