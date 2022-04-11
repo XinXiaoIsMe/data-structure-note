@@ -1,0 +1,5 @@
+const BubbleSort = require('./BubbleSort')
+const arr = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10))
+console.log([...arr])
+BubbleSort.sort3(arr)
+console.log(arr)
